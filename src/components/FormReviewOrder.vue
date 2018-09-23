@@ -74,24 +74,23 @@
   </div>
 </template>
 
-<script>
-  export default {
-    data () {
-      return {
-        form: {
-          chocolate: false,
-          otherTreat: false
-        }
-      }
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: 'FormReviewOrder',
+  data() {
+    return {
+      form: {
+        chocolate: false,
+        otherTreat: false,
+      },
+    };
+  },
+  computed: {
+    totalPrice() {
+      return 0;
     },
-    computed: {
-      totalPrice () {
-        return 0
-      }
-    }
-  }
+  },
+});
 </script>
-
-<style scoped>
-
-</style>

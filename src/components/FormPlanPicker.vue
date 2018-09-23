@@ -35,44 +35,50 @@
   </div>
 </template>
 
-<script>
-  import {required} from 'vuelidate/lib/validators'
+<script lang="ts">
+import Vue from 'vue';
+import { required } from 'vuelidate/lib/validators';
+import { Plan } from '@/components/formProps';
 
-  export default {
-    data() {
-      return {
-        plans: [
-          {
-            price: 19,
-            weight: '250g',
-            name: 'The Single',
-            description: 'One bag of freshly roasted coffee beans delivered to your house every month'
-          },
-          {
-            price: 29,
-            weight: '500g',
-            name: 'The Curious',
-            description: 'Two different types of freshly roasted coffee every month'
-          },
-          {
-            price: 49,
-            weight: '1kg',
-            name: 'The Addict',
-            description: 'Two bags of two different types of freshly roasted coffee every month.'
-          }
-        ],
-        selectedPlan: null
-      }
+export default Vue.extend({
+  name: 'FormPlanPicker',
+  data() {
+    return {
+      plans: [
+        {
+          price: 19,
+          weight: '250g',
+          name: 'The Single',
+          description:
+            'One bag of freshly roasted coffee beans delivered to your house every month',
+        },
+        {
+          price: 29,
+          weight: '500g',
+          name: 'The Curious',
+          description:
+            'Two different types of freshly roasted coffee every month',
+        },
+        {
+          price: 49,
+          weight: '1kg',
+          name: 'The Addict',
+          description:
+            'Two bags of two different types of freshly roasted coffee every month.',
+        },
+      ],
+      selectedPlan: null as Plan | null,
+    };
+  },
+  validations: {
+    selectedPlan: {
+      required,
     },
-    validations: {
-      selectedPlan: {
-        required
-      }
+  },
+  methods: {
+    pickPlan(plan: Plan) {
+      this.selectedPlan = plan;
     },
-    methods: {
-      pickPlan (plan) {
-        this.selectedPlan = plan
-      }
-    }
-  }
+  },
+});
 </script>

@@ -31,35 +31,34 @@
   </div>
 </template>
 
-<script>
-  import {required, email} from 'vuelidate/lib/validators'
-  export default {
-    data () {
-      return {
-        form: {
-          email: null,
-          password: null,
-          name: null,
-        }
-      }
-    },
-    validations: {
+<script lang="ts">
+import Vue from 'vue';
+import { required, email } from 'vuelidate/lib/validators';
+
+export default Vue.extend({
+  name: 'FormUserDetails',
+  data() {
+    return {
       form: {
-        email: {
-          required,
-          email
-        },
-        password: {
-          required
-        },
-        name: {
-          required
-        }
-      }
-    }
-  }
+        email: null,
+        password: null,
+        name: null,
+      },
+    };
+  },
+  validations: {
+    form: {
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+      },
+      name: {
+        required,
+      },
+    },
+  },
+});
 </script>
-
-<style scoped>
-
-</style>

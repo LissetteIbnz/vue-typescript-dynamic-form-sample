@@ -12,13 +12,14 @@
   </div>
 </template>
 
-<script>
-import FormWizard from './components/FormWizard.vue'
+<script lang="ts">
+import Vue from 'vue';
+import { FormWizard } from './components';
 
-export default {
+export default Vue.extend({
   name: 'app',
   components: {
     FormWizard
-  }
-}
+  },
+})
 </script>

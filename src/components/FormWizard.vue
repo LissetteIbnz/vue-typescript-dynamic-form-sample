@@ -27,23 +27,23 @@
   </div>
 </template>
 
-<script>
-import FormPlanPicker from './FormPlanPicker'
-import FormUserDetails from './FormUserDetails'
-import FormAddress from './FormAddress'
-import FormReviewOrder from './FormReviewOrder'
-export default {
+<script lang="ts">
+import Vue from 'vue';
+import { FormUserDetails, FormReviewOrder, FormPlanPicker, FormAddress } from './';
+import { formProps, Plan } from './formProps';
+
+export default Vue.extend({
   name: 'FormWizard',
   components: {
     FormPlanPicker,
     FormUserDetails,
     FormAddress,
-    FormReviewOrder
+    FormReviewOrder,
   },
-  data () {
+  data() {
     return {
-      currentStepNumber: 1,
-      length: 4,
+      currentStepNumber: 1 as number,
+      length: 4 as number,
       form: {
         plan: null,
         email: null,
@@ -52,22 +52,22 @@ export default {
         address: null,
         recipient: null,
         chocolate: false,
-        otherTreat: false
-      }
-    }
+        otherTreat: false,
+      } as formProps,
+    };
   },
   computed: {
-    progress () {
-      return this.currentStepNumber/this.length * 100
-    }
+    progress(): number {
+      return this.currentStepNumber / this.length * 100;
+    },
   },
   methods: {
-    goBack () {
-      this.currentStepNumber--
+    goBack(): void {
+      this.currentStepNumber--;
     },
-    goNext () {
-      this.currentStepNumber++
-    }
-  }
-}
+    goNext(): void {
+      this.currentStepNumber++;
+    },
+  },
+});
 </script>

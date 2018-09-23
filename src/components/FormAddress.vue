@@ -22,30 +22,29 @@
   </div>
 </template>
 
-<script>
-  import {required} from 'vuelidate/lib/validators'
-  export default {
-    data () {
-      return {
-        form: {
-          address: null,
-          recipient: null
-        }
-      }
-    },
-    validations: {
+<script lang="ts">
+import Vue from 'vue';
+import { required } from 'vuelidate/lib/validators';
+
+export default Vue.extend({
+  name: 'FormAddress',
+  data() {
+    return {
       form: {
-        address: {
-          required
-        },
-        recipient: {
-          required
-        }
-      }
-    }
-  }
+        address: null,
+        recipient: null,
+      },
+    };
+  },
+  validations: {
+    form: {
+      address: {
+        required,
+      },
+      recipient: {
+        required,
+      },
+    },
+  },
+});
 </script>
-
-<style scoped>
-
-</style>
