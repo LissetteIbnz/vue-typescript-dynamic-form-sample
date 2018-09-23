@@ -1,10 +1,12 @@
-const user = {
+import { UserEntity } from '@/models';
+
+const user: UserEntity = {
   email: 'john@travolta.io',
   password: '123456',
   name: 'John'
 }
 
-export const checkIfUserExistsInDB = email => {
+export const checkIfUserExistsInDB = (email: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (email === user.email) {
@@ -16,7 +18,7 @@ export const checkIfUserExistsInDB = email => {
   })
 }
 
-export const authenticateUser = (email, password) => {
+export const authenticateUser = (email: string, password: string): Promise<Object | string> => {
   return new Promise((resolve, reject) => {
     console.log(email === user.email && password === user.password)
     setTimeout(() => {
@@ -32,7 +34,7 @@ export const authenticateUser = (email, password) => {
   })
 }
 
-export const postFormToDB = (form) => {
+export const postFormToDB = (form: Object): Promise<Object> => {
   return new Promise((resolve,) => {
     setTimeout(() => resolve(form), 1000)
   })
