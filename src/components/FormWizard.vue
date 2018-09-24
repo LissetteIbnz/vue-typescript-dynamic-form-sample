@@ -30,7 +30,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { FormUserDetails, FormReviewOrder, FormPlanPicker, FormAddress } from './';
-import { formProps, Plan } from './formProps';
+import { FormData, PlanEntity } from '@/models';
 
 export default Vue.extend({
   name: 'FormWizard',
@@ -53,7 +53,7 @@ export default Vue.extend({
         recipient: null,
         chocolate: false,
         otherTreat: false,
-      } as formProps,
+      } as FormData,
     };
   },
   computed: {
