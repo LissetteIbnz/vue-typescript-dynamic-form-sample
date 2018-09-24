@@ -63,7 +63,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required, email } from 'vuelidate/lib/validators';
-import { formUserDetails } from './viewModel';
+import { FormUserDetails } from './viewModel';
 
 export default Vue.extend({
   name: 'FormUserDetails',
@@ -73,7 +73,7 @@ export default Vue.extend({
         email: null,
         password: null,
         name: null,
-      } as formUserDetails,
+      } as FormUserDetails,
     };
   },
   validations: {

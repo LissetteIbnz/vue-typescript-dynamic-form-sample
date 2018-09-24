@@ -21,7 +21,7 @@ import FormWizard from '@/components/FormWizard.vue';
 export default Vue.extend({
   name: 'App',
   components: {
-    FormWizard
+    FormWizard,
   },
-})
+});
 </script>

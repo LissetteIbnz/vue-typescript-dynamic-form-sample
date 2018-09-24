@@ -44,7 +44,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
-import { formAddress } from './viewModel';
+import { FormAddress } from './viewModel';
 
 export default Vue.extend({
   name: 'FormAddress',
@@ -53,7 +53,7 @@ export default Vue.extend({
       form: {
         address: null,
         recipient: null,
-      } as formAddress,
+      } as FormAddress,
     };
   },
   validations: {

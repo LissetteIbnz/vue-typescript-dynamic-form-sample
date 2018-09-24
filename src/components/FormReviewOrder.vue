@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { formReviewOrder } from './viewModel';
+import { FormReviewOrder } from './viewModel';
 
 export default Vue.extend({
   name: 'FormReviewOrder',
@@ -93,7 +93,7 @@ export default Vue.extend({
       form: {
         chocolate: false,
         otherTreat: false,
-      } as formReviewOrder,
+      } as FormReviewOrder,
     };
   },
   computed: {
