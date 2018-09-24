@@ -38,7 +38,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
-import { Plan } from '@/components/formProps';
+import { PlanEntity } from '@/models';
 
 export default Vue.extend({
   name: 'FormPlanPicker',
@@ -67,7 +67,7 @@ export default Vue.extend({
             'Two bags of two different types of freshly roasted coffee every month.',
         },
       ],
-      selectedPlan: null as Plan | null,
+      selectedPlan: null as PlanEntity | null,
     };
   },
   validations: {
@@ -76,7 +76,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    pickPlan(plan: Plan) {
+    pickPlan(plan: PlanEntity) {
       this.selectedPlan = plan;
     },
   },
