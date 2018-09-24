@@ -11,7 +11,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "paths": {
       "@/*": [
@@ -34,8 +35,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  "files": [
-    "src/**/*.ts"
   ]
 }

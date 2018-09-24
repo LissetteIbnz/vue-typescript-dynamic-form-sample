@@ -1,4 +1,4 @@
-import { UserEntity } from '@/models';
+import { UserEntity } from '../models';
 
 const user: UserEntity = {
   email: 'john@travolta.io',

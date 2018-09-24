@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { FormWizard } from './components';
+import { FormWizard } from '@/components';
 
 export default Vue.extend({
   name: 'app',

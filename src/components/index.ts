@@ -1,5 +1,12 @@
-export { default as FormWizard } from './FormWizard.vue';
-export { default as FormUserDetails } from './FormUserDetails.vue';
-export { default as FormReviewOrder } from './FormReviewOrder.vue';
-export { default as FormPlanPicker } from './FormPlanPicker.vue';
-export { default as FormAddress }from './FormAddress.vue';
+// import FormPlanPicker from './FormPlanPicker.vue';
+import FormWizard from './FormWizard.vue';
+import FormUserDetails from './FormUserDetails.vue';
+import FormReviewOrder from './FormReviewOrder.vue';
+import FormPlanPicker from './FormPlanPicker.vue';
+import FormAddress from './FormAddress.vue';
+// export { default as FormWizard } from './FormWizard.vue';
+// export { default as FormUserDetails } from './FormUserDetails.vue';
+// export { default as FormReviewOrder } from './FormReviewOrder.vue';
+// export { default as FormPlanPicker } from './FormPlanPicker.vue';
+// export { default as FormAddress } from './FormAddress.vue';
+export { FormPlanPicker, FormAddress, FormReviewOrder, FormUserDetails, FormWizard, };
