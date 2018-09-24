@@ -1,6 +1,6 @@
 import { PlanEntity } from '@/models';
 
-export interface formWizard {
+export interface FormWizard {
   plan: PlanEntity | null;
   email: string | null;
   name: string | null;
@@ -11,18 +11,18 @@ export interface formWizard {
   otherTreat: boolean;
 }
 
-export interface formAddress {
+export interface FormAddress {
   address: string | null;
   recipient: string | null;
 }
 
-export interface formUserDetails {
+export interface FormUserDetails {
   email: string | null;
   password: string | null;
   name: string | null;
 }
 
-export interface formReviewOrder {
+export interface FormReviewOrder {
   chocolate: boolean;
   otherTreat: boolean;
 }
