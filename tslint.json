@@ -3,6 +3,7 @@
   "rules": {
     "quotemark": [true, "single", "jsx-double"],
     "align": false,
-    "ter-arrow-parens": [true, "as-needed"]
+    "ter-arrow-parens": [true, "as-needed"],
+    "import-name": false
   }
 }
