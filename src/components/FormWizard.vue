@@ -6,31 +6,31 @@
     <FormReviewOrder v-if="currentStepNumber === 4"/>
 
     <div class="progress-bar">
-      <div :style="`width: ${progress}%;`"></div>
+      <div :style="`width: ${progress}%;`"/>
     </div>
 
     <!-- Actions -->
     <div class="buttons">
       <button
-        @click="goBack"
         v-if="currentStepNumber > 1"
         class="btn-outlined"
+        @click="goBack"
       >Back
       </button>
       <button
-        @click="goNext"
         class="btn"
+        @click="goNext"
       >Next</button>
     </div>
 
-    <pre><code>{{form}}</code></pre>
+    <pre><code>{{ form }}</code></pre>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { FormUserDetails, FormReviewOrder, FormPlanPicker, FormAddress } from './';
-import { FormData, PlanEntity } from '@/models';
+import { FormUserDetails, FormReviewOrder, FormPlanPicker, FormAddress } from '@/components';
+import { formWizard } from './viewModel';
 
 export default Vue.extend({
   name: 'FormWizard',
@@ -53,7 +53,7 @@ export default Vue.extend({
         recipient: null,
         chocolate: false,
         otherTreat: false,
-      } as FormData,
+      } as formWizard,
     };
   },
   computed: {

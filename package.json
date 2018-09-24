@@ -26,9 +26,9 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "@vue/typescript"
+      "@vue/typescript",
+      "plugin:vue/recommended",
+      "eslint:recommended"
     ],
     "rules": {
       "no-console": 0
