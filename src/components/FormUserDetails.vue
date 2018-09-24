@@ -6,7 +6,7 @@
       Create an account or log in to order your liquid gold subscription
     </h2>
 
-    <form class="form">
+    <form @input="submit" class="form">
       <div class="form-group">
         <label class="form-label" for="email">Email</label>
         <input type="text" v-model="$v.form.email.$model" placeholder="your@email.com" class="form-control" id="email">
@@ -34,6 +34,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required, email } from 'vuelidate/lib/validators';
+import { userForm } from './viewModel';
 
 export default Vue.extend({
   name: 'FormUserDetails',
@@ -43,7 +44,7 @@ export default Vue.extend({
         email: null,
         password: null,
         name: null,
-      },
+      } as userForm,
     };
   },
   validations: {
@@ -60,5 +61,16 @@ export default Vue.extend({
       },
     },
   },
+  methods: {
+    submit() {
+      if (!this.$v.$invalid) {
+        this.$emit('update', {
+          email: this.form.email,
+          password: this.form.password,
+          name: this.form.name,
+        } as userForm);
+      }      
+    }
+  }
 });
 </script>

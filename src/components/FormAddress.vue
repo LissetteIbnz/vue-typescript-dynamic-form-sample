@@ -6,7 +6,7 @@
       Where should we send your freshly roasted coffee beans?
     </h2>
 
-    <form class="form">
+    <form @input="submit" class="form">
       <div class="form-group">
         <label class="form-label" for="delivery_name">Name</label>
         <input v-model="$v.form.recipient.$model" type="text" placeholder="Recipients Name" class="form-control" id="delivery_name">
@@ -25,6 +25,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
+import { addressForm } from './viewModel';
 
 export default Vue.extend({
   name: 'FormAddress',
@@ -33,7 +34,7 @@ export default Vue.extend({
       form: {
         address: null,
         recipient: null,
-      },
+      } as addressForm,
     };
   },
   validations: {
@@ -46,5 +47,15 @@ export default Vue.extend({
       },
     },
   },
+  methods: {
+    submit() {
+      if (!this.$v.$invalid) {
+        this.$emit('update', {
+          address: this.form.address,
+          recipient: this.form.recipient,
+        } as addressForm);
+      }
+    }
+  }
 });
 </script>
