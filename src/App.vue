@@ -1,5 +1,7 @@
 <template>
-  <div id="app" class="container mx-auto py-6">
+  <div 
+    id="app" 
+    class="container mx-auto py-6">
     <header>
       <div>
         <span id="logo">Liquid Gold Box</span>
@@ -14,12 +16,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { FormWizard } from '@/components';
+import FormWizard from '@/components/FormWizard.vue';
 
 export default Vue.extend({
-  name: 'app',
+  name: 'App',
   components: {
-    FormWizard
+    FormWizard,
   },
-})
+});
 </script>

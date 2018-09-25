@@ -10,28 +10,30 @@
       <div
         v-for="plan in plans"
         :key="plan.price"
-        @click="pickPlan(plan)"
         :class="{'active-plan': selectedPlan === plan}"
         class="plan"
+        @click="pickPlan(plan)"
       >
         <div class="weight">
-          {{plan.weight}}
+          {{ plan.weight }}
         </div>
         <div class="description">
           <span class="title">
-              {{plan.name}}
+            {{ plan.name }}
           </span>
           <span class="description">
-              {{plan.description}}
+            {{ plan.description }}
           </span>
         </div>
         <div class="price">
           <span class="dollar-sign">$</span>
-          <span class="number">{{plan.price}}</span>
+          <span class="number">{{ plan.price }}</span>
         </div>
       </div>
     </div>
-    <div v-if="$v.selectedPlan.$error" class="error">you should pick a plan to continue</div>
+    <div 
+      v-if="$v.selectedPlan.$error" 
+      class="error">you should pick a plan to continue</div>
   </div>
 </template>
 

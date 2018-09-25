@@ -22,6 +22,8 @@ npm run lint
 
 - Add typescript support through `vue add @vue/typescript`.
 - Restructure project (api, models, typings).
+- Add Typescript support through `vue add @vue/typescript`.
+- Add Jest as test runner `vue add @vue/unit-jest`.
 
 In the child component _FormPlanPicker.vue_, we add a event emit with `selectedPlan` as param.
 In the parent component _FormWizard.vue_, we should add the event listener for `update` method.

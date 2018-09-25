@@ -30,7 +30,7 @@
 
           <div class="price">
             <span class="dollar-sign">$</span>
-            <span class="number">{{totalPrice}}</span>
+            <span class="number">{{ totalPrice }}</span>
           </div>
         </div>
       </div>
@@ -45,12 +45,20 @@
 
       <div class="options">
         <div class="option">
-          <input v-model="form.chocolate" type="checkbox" value="chocolate" id="chocolate">
+          <input 
+            id="chocolate" 
+            v-model="form.chocolate" 
+            type="checkbox" 
+            value="chocolate">
           <label for="chocolate">4 pcs. Single Origin Chocolate (+$4/month)</label>
         </div>
 
         <div class="option">
-          <input v-model="form.otherTreat" type="checkbox" value="chocolate" id="other_treat">
+          <input 
+            id="other_treat" 
+            v-model="form.otherTreat" 
+            type="checkbox" 
+            value="chocolate">
           <label for="other_treat">Another delicious treat (+$2/month)</label>
         </div>
       </div>
@@ -76,6 +84,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { FormReviewOrder } from './viewModel';
 
 export default Vue.extend({
   name: 'FormReviewOrder',
@@ -84,11 +93,11 @@ export default Vue.extend({
       form: {
         chocolate: false,
         otherTreat: false,
-      },
+      } as FormReviewOrder,
     };
   },
   computed: {
-    totalPrice() {
+    totalPrice(): number {
       return 0;
     },
   },
