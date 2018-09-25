@@ -6,7 +6,9 @@
       Create an account or log in to order your liquid gold subscription
     </h2>
 
-    <form @input="submit" class="form">
+    <form 
+      class="form" 
+      @input="submit">
       <div class="form-group">
         <label 
           class="form-label" 
@@ -97,7 +99,7 @@ export default Vue.extend({
           email: this.form.email,
           password: this.form.password,
           name: this.form.name,
-        } as userForm);
+        } as FormUserDetails);
       }      
     }
   }
