@@ -4,6 +4,7 @@
     "quotemark": [true, "single", "jsx-double"],
     "align": false,
     "ter-arrow-parens": [true, "as-needed"],
-    "import-name": false
+    "import-name": false,
+    "no-boolean-literal-compare": true
   }
 }
