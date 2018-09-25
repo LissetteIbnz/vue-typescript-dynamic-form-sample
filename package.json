@@ -13,6 +13,7 @@
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.47",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-eslint": "^3.0.0",
