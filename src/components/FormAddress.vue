@@ -76,7 +76,7 @@ export default Vue.extend({
           recipient: this.form.recipient,
         } as FormAddress);
       }
-    }
-  }
+    },
+  },
 });
 </script>

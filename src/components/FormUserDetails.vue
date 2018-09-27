@@ -101,7 +101,7 @@ export default Vue.extend({
           name: this.form.name,
         } as FormUserDetails);
       }      
-    }
-  }
+    },
+  },
 });
 </script>
