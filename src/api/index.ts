@@ -6,9 +6,7 @@ const user: UserEntity = {
   name: 'John',
 };
 
-export const checkIfUserExistsInDB = (
-  email: string,
-): Promise<boolean | string> => {
+export const checkIfUserExistsInDB = (email: string): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (email === user.email) {
@@ -20,12 +18,9 @@ export const checkIfUserExistsInDB = (
   });
 };
 
-export const authenticateUser = (
-  email: string,
-  password: string,
-): Promise<Object | string> => {
+export const authenticateUser = (email: string, password: string): Promise<object | string> => {
   return new Promise((resolve, reject) => {
-    console.log(email === user.email && password === user.password);
+    // console.log(email === user.email && password === user.password);
     setTimeout(() => {
       if (email === user.email && password === user.password) {
         resolve({
@@ -39,7 +34,7 @@ export const authenticateUser = (
   });
 };
 
-export const postFormToDB = (form: Object): Promise<Object> => {
+export const postFormToDB = (form: object): Promise<object> => {
   return new Promise(resolve => {
     setTimeout(() => resolve(form), 1000);
   });
