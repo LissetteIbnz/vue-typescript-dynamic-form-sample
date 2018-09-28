@@ -16,15 +16,15 @@
       <div class="plans">
         <div class="plan active-plan">
           <div class="weight">
-            PLAN WEIGHT
+            {{ wizardData.plan.weight }}
           </div>
 
           <div class="description">
             <span class="title">
-              PLAN NAME
+              {{ wizardData.plan.name }}
             </span>
             <span class="description">
-              PLAN DESC
+              {{ wizardData.plan.description }}
             </span>
           </div>
 
@@ -72,9 +72,9 @@
         </div>
 
         <div class="w-1/3">
-          <h3>RECIPIENT</h3>
+          <h3>{{ wizardData.recipient }}</h3>
           <p class="leading-normal">
-            ADDRESS
+            {{ wizardData.address }}
           </p>
         </div>
       </div>
@@ -84,10 +84,16 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { FormReviewOrder } from './viewModel';
+import { FormReviewOrder, FormWizard } from './viewModel';
 
 export default Vue.extend({
   name: 'FormReviewOrder',
+  props: {
+    wizardData: {
+      type: Object as () => FormWizard,
+      required: true,
+    },
+  },
   data() {
     return {
       form: {
@@ -98,7 +104,16 @@ export default Vue.extend({
   },
   computed: {
     totalPrice(): number {
-      return 0;
+      let total: number = this.wizardData.plan ? this.wizardData.plan.price : 0;
+
+      if (this.form.chocolate) {
+        total += 4;
+      }
+
+      if (this.form.otherTreat) {
+        total += 2;
+      }
+      return total;
     },
   },
   methods: {
