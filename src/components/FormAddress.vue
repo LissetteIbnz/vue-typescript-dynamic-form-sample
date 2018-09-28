@@ -6,7 +6,7 @@
       Where should we send your freshly roasted coffee beans?
     </h2>
 
-    <form class="form">
+    <form @input="submit" class="form">
       <div class="form-group">
         <label
           class="form-label"
@@ -64,6 +64,16 @@ export default Vue.extend({
       recipient: {
         required,
       },
+    },
+  },
+  methods: {
+    submit(): void {
+      if (!this.$v.$invalid) {
+        this.$emit('update', {
+          address: this.form.address,
+          recipient: this.form.recipient,
+        } as FormAddress);
+      }
     },
   },
 });
