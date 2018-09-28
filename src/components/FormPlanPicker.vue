@@ -78,7 +78,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    pickPlan(plan: PlanEntity) {
+    pickPlan(plan: PlanEntity): void {
       this.selectedPlan = plan;
     },
   },

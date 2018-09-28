@@ -19,7 +19,3 @@ npm run build
 ```
 npm run lint
 ```
-
-- Add Typescript support through `vue add @vue/typescript`.
-- Add Jest as test runner `vue add @vue/unit-jest`.
-
