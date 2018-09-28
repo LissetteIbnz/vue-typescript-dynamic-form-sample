@@ -12,6 +12,7 @@
           class="form-label" 
           for="email">Email</label>
         <input 
+          @input="submit"
           id="email" 
           v-model="$v.form.email.$model" 
           type="text" 
@@ -31,6 +32,7 @@
           class="form-label" 
           for="password">Password</label>
         <input 
+          @input="submit"
           id="password" 
           v-model="$v.form.password.$model" 
           type="password" 
@@ -47,6 +49,7 @@
           class="form-label" 
           for="name">Name</label>
         <input 
+          @input="submit"
           id="name" 
           v-model="$v.form.name.$model" 
           type="text" 
@@ -88,6 +91,17 @@ export default Vue.extend({
       name: {
         required,
       },
+    },
+  },
+  methods: {
+    submit(): void {
+      if (!this.$v.$invalid) {
+        this.$emit('update', {
+          email: this.form.email,
+          password: this.form.password,
+          name: this.form.name,
+        } as FormUserDetails);
+      }
     },
   },
 });

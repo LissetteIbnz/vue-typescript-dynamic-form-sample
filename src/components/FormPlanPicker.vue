@@ -68,7 +68,7 @@ export default Vue.extend({
           description:
             'Two bags of two different types of freshly roasted coffee every month.',
         },
-      ],
+      ] as PlanEntity[],
       selectedPlan: null as PlanEntity | null,
     };
   },
