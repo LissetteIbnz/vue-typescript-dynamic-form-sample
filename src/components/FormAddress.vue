@@ -44,15 +44,21 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
-import { FormAddress } from './viewModel';
+import { FormAddress, FormWizard } from './viewModel';
 
 export default Vue.extend({
   name: 'FormAddress',
+  props: {
+    wizardData: {
+      type: Object as () => FormWizard,
+      required: true,
+    },
+  },
   data() {
     return {
       form: {
         address: null,
-        recipient: null,
+        recipient: this.wizardData.name,
       } as FormAddress,
     };
   },
