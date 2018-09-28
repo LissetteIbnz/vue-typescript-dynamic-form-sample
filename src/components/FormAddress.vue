@@ -6,7 +6,7 @@
       Where should we send your freshly roasted coffee beans?
     </h2>
 
-    <form class="form">
+    <form @input="submit" class="form">
       <div class="form-group">
         <label
           class="form-label"
@@ -44,15 +44,21 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
-import { FormAddress } from './viewModel';
+import { FormAddress, FormWizard } from './viewModel';
 
 export default Vue.extend({
   name: 'FormAddress',
+  props: {
+    wizardData: {
+      type: Object as () => FormWizard,
+      required: true,
+    },
+  },
   data() {
     return {
       form: {
         address: null,
-        recipient: null,
+        recipient: this.wizardData.name,
       } as FormAddress,
     };
   },
@@ -64,6 +70,16 @@ export default Vue.extend({
       recipient: {
         required,
       },
+    },
+  },
+  methods: {
+    submit(): void {
+      if (!this.$v.$invalid) {
+        this.$emit('update', {
+          address: this.form.address,
+          recipient: this.form.recipient,
+        } as FormAddress);
+      }
     },
   },
 });

@@ -68,7 +68,7 @@ export default Vue.extend({
           description:
             'Two bags of two different types of freshly roasted coffee every month.',
         },
-      ],
+      ] as PlanEntity[],
       selectedPlan: null as PlanEntity | null,
     };
   },
@@ -80,6 +80,10 @@ export default Vue.extend({
   methods: {
     pickPlan(plan: PlanEntity): void {
       this.selectedPlan = plan;
+
+      this.$emit('update', {
+        plan: this.selectedPlan,
+      });
     },
   },
 });
