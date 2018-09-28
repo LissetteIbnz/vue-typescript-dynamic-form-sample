@@ -19,6 +19,7 @@
       </button>
       <button
         class="btn"
+        :disabled="!canGoNext"
         @click="goNext"
       >Next</button>
     </div>
@@ -44,6 +45,7 @@ export default Vue.extend({
     return {
       currentStepNumber: 1 as number,
       length: 4 as number,
+      canGoNext: false as boolean,
       form: {
         plan: null,
         email: null,
@@ -64,12 +66,14 @@ export default Vue.extend({
   methods: {
     processStep(stepData: FormWizard): void {
       Object.assign(this.form, stepData);
+      this.canGoNext = true;
     },
     goBack(): void {
       this.currentStepNumber -= 1;
     },
     goNext(): void {
       this.currentStepNumber += 1;
+      this.canGoNext = false;
     },
   },
 });
