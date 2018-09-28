@@ -43,7 +43,7 @@
         Treat yourself by leveling up your monthly box
       </p>
 
-      <div class="options">
+      <div @change="submit" class="options">
         <div class="option">
           <input 
             id="chocolate" 
@@ -99,6 +99,14 @@ export default Vue.extend({
   computed: {
     totalPrice(): number {
       return 0;
+    },
+  },
+  methods: {
+    submit(): void {
+      this.$emit('update', {
+        chocolate: this.form.chocolate,
+        otherTreat: this.form.otherTreat,
+      } as FormReviewOrder);
     },
   },
 });
