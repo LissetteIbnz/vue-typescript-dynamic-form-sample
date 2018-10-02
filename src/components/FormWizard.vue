@@ -1,9 +1,15 @@
 <template>
   <div>
-    <FormPlanPicker v-if="currentStepNumber === 1" @update="processStep"/>
-    <FormUserDetails v-if="currentStepNumber === 2" @update="processStep"/>
+    <component
+      :is="steps[currentStepNumber - 1]"
+      v-if="currentStepNumber === 1"
+      @update="processStep"
+      :wizard-data="form"     
+    />
+    <!-- <FormPlanPicker v-if="currentStepNumber === 1" @update="processStep"/> -->
+    <!-- <FormUserDetails v-if="currentStepNumber === 2" @update="processStep"/>
     <FormAddress v-if="currentStepNumber === 3" @update="processStep" :wizard-data="form" />
-    <FormReviewOrder v-if="currentStepNumber === 4" @update="processStep" :wizard-data="form" />
+    <FormReviewOrder v-if="currentStepNumber === 4" @update="processStep" :wizard-data="form" /> -->
 
     <div class="progress-bar">
       <div :style="`width: ${progress}%;`"/>
@@ -30,7 +36,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { FormUserDetails, FormReviewOrder, FormPlanPicker, FormAddress } from '@/components';
+import {
+  FormUserDetails,
+  FormReviewOrder,
+  FormPlanPicker,
+  FormAddress,
+} from '@/components';
 import { FormWizard } from './viewModel';
 
 export default Vue.extend({
@@ -43,6 +54,12 @@ export default Vue.extend({
   },
   data() {
     return {
+      steps: [
+        'FormPlanPicker',
+        'FormUserDetails',
+        'FormAddress',
+        'FormReviewOrder',
+      ],
       currentStepNumber: 1 as number,
       length: 4 as number,
       canGoNext: false as boolean,
@@ -60,7 +77,7 @@ export default Vue.extend({
   },
   computed: {
     progress(): number {
-      return this.currentStepNumber / this.length * 100;
+      return (this.currentStepNumber / this.length) * 100;
     },
   },
   methods: {
