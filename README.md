@@ -43,3 +43,34 @@ Vamos a cambiar este comportamiento por una carga dinámica de componentes.
 ```
 
 En la etiqueta `is` pondremos el nombre del componente a renderizar. El resto de las props o listener se agregarán como la definición un componente normal.
+
+Para hacer una renderización de componentes reusables, vamos a meter los nombres de los componentes en un array; los pasos de cuál se debe mostrar y el número de componentes (pasos) en propiedades computadas.
+
+```html
+    <component
+      :is="currentStep"
+      @update="processStep"
+      :wizard-data="form"     
+    />
+···
+data() {
+    return {
+      steps: [
+        'FormPlanPicker',
+        'FormUserDetails',
+        'FormAddress',
+        'FormReviewOrder',
+      ],
+···
+computed: {
+    length(): number {
+      return this.steps.length;
+    },
+    currentStep(): string {
+      return this.steps[this.currentStepNumber - 1];
+    },
+···
+```
+
+---
+
