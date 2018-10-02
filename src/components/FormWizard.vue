@@ -1,8 +1,7 @@
 <template>
   <div>
     <component
-      :is="steps[currentStepNumber - 1]"
-      v-if="currentStepNumber === 1"
+      :is="currentStep"
       @update="processStep"
       :wizard-data="form"     
     />
@@ -61,7 +60,6 @@ export default Vue.extend({
         'FormReviewOrder',
       ],
       currentStepNumber: 1 as number,
-      length: 4 as number,
       canGoNext: false as boolean,
       form: {
         plan: null,
@@ -76,6 +74,12 @@ export default Vue.extend({
     };
   },
   computed: {
+    length(): number {
+      return this.steps.length;
+    },
+    currentStep(): string {
+      return this.steps[this.currentStepNumber - 1];
+    },
     progress(): number {
       return (this.currentStepNumber / this.length) * 100;
     },
