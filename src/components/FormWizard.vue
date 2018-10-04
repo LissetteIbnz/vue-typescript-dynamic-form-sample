@@ -40,7 +40,7 @@ import {
   FormPlanPicker,
   FormAddress,
 } from '@/components';
-import { FormWizard, ProcessStep, FormGeneral } from './viewModel';
+import { FormWizard, ProcessStep, } from './viewModel';
 
 export default Vue.extend({
   name: 'FormWizard',
