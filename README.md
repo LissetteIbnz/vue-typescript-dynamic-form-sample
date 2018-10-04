@@ -75,3 +75,12 @@ computed: {
 ---
 
 Ahora introduciremos el concepto de `keep-alive`. Esto se resume en que el componente sólo pasará por los ciclos de vida created and destroyed una sola vez, de forma que al navegar entre formularios, al ir hacia atrás tendremos el formulario en el estado anterior, manteniendo los datos que habían en él.
+
+---
+
+## Control Child Component Through refs
+
+A veces necesitamos controlar el DOM o un componente hijo dentro de la instancia de Vue. Para hacerlo, sólo necesitamos agregar al componente una etiqueta html `ref`. Con las referencias podremos acceder al hijo desde el padre, tanto a sus datos como a sus métodos.
+
+Primer problema:
+Al definir el componente con Typescript, al acceder a los métodos o datos del hijo mediante refs, saltará un error advirtiendo que no está definido dentro de VueConstructor.

@@ -2,6 +2,7 @@
   <div>
     <keep-alive>
       <component
+        ref="currentStep"
         :is="currentStep"
         @update="processStep"
         :wizard-data="form"     
@@ -32,14 +33,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import {
   FormUserDetails,
   FormReviewOrder,
   FormPlanPicker,
   FormAddress,
 } from '@/components';
-import { FormWizard, ProcessStep } from './viewModel';
+import { FormWizard, ProcessStep, FormGeneral } from './viewModel';
 
 export default Vue.extend({
   name: 'FormWizard',
@@ -93,7 +94,10 @@ export default Vue.extend({
     },
     goNext(): void {
       this.currentStepNumber += 1;
-      this.canGoNext = false;
+
+      this.$nextTick(() => {
+        this.canGoNext = !(this.$refs.currentStep as Vue).$v.$invalid;
+      });
     },
   },
 });

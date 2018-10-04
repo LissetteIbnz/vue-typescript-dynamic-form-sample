@@ -1,4 +1,6 @@
 import { PlanEntity } from '@/models';
+import Vue from 'vue';
+import { } from 'vuelidate';
 
 export interface ProcessStep {
   data: FormAddress | FormUserDetails | FormReviewOrder | FormPlanPicker;

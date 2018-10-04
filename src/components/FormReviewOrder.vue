@@ -116,6 +116,7 @@ export default Vue.extend({
       return total;
     },
   },
+  validations: {}, // this.$v.$invalid always be false
   methods: {
     submit(): void {
       this.$emit('update', {

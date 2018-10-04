@@ -81,7 +81,9 @@ export default Vue.extend({
   methods: {
     pickPlan(plan: PlanEntity) {
       this.selectedPlan = plan;
-
+      this.submit();
+    },
+    submit() {
       this.$emit('update', {
         data: {
           plan: this.selectedPlan,
