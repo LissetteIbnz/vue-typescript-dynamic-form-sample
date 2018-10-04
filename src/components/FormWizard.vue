@@ -1,10 +1,12 @@
 <template>
   <div>
-    <component
-      :is="currentStep"
-      @update="processStep"
-      :wizard-data="form"     
-    />
+    <keep-alive>
+      <component
+        :is="currentStep"
+        @update="processStep"
+        :wizard-data="form"     
+      />
+    </keep-alive>
     
     <div class="progress-bar">
       <div :style="`width: ${progress}%;`"/>
@@ -37,7 +39,7 @@ import {
   FormPlanPicker,
   FormAddress,
 } from '@/components';
-import { FormWizard } from './viewModel';
+import { FormWizard, ProcessStep } from './viewModel';
 
 export default Vue.extend({
   name: 'FormWizard',
@@ -81,12 +83,13 @@ export default Vue.extend({
     },
   },
   methods: {
-    processStep(stepData: FormWizard): void {
-      Object.assign(this.form, stepData);
-      this.canGoNext = true;
+    processStep(step: ProcessStep): void {
+      Object.assign(this.form, step.data);
+      this.canGoNext = step.valid;
     },
     goBack(): void {
       this.currentStepNumber -= 1;
+      this.canGoNext = true;
     },
     goNext(): void {
       this.currentStepNumber += 1;

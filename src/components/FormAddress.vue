@@ -44,7 +44,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
-import { FormAddress, FormWizard } from './viewModel';
+import { FormAddress, FormWizard, ProcessStep } from './viewModel';
 
 export default Vue.extend({
   name: 'FormAddress',
@@ -74,12 +74,13 @@ export default Vue.extend({
   },
   methods: {
     submit(): void {
-      if (!this.$v.$invalid) {
-        this.$emit('update', {
+      this.$emit('update', {
+        data: {
           address: this.form.address,
           recipient: this.form.recipient,
-        } as FormAddress);
-      }
+        },
+        valid: !this.$v.$invalid,
+      } as ProcessStep);
     },
   },
 });

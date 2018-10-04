@@ -41,6 +41,7 @@
 import Vue from 'vue';
 import { required } from 'vuelidate/lib/validators';
 import { PlanEntity } from '@/models';
+import { ProcessStep } from '@/components/viewModel';
 
 export default Vue.extend({
   name: 'FormPlanPicker',
@@ -82,8 +83,11 @@ export default Vue.extend({
       this.selectedPlan = plan;
 
       this.$emit('update', {
-        plan: this.selectedPlan,
-      });
+        data: {
+          plan: this.selectedPlan,
+        },
+        valid: !this.$v.$invalid,
+      } as ProcessStep);
     },
   },
 });

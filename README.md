@@ -50,7 +50,7 @@ Para hacer una renderización de componentes reusables, vamos a meter los nombre
     <component
       :is="currentStep"
       @update="processStep"
-      :wizard-data="form"     
+      :wizard-data="form"
     />
 ···
 data() {
@@ -74,3 +74,4 @@ computed: {
 
 ---
 
+Ahora introduciremos el concepto de `keep-alive`. Esto se resume en que el componente sólo pasará por los ciclos de vida created and destroyed una sola vez, de forma que al navegar entre formularios, al ir hacia atrás tendremos el formulario en el estado anterior, manteniendo los datos que habían en él.
