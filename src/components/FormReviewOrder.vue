@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { FormReviewOrder, FormWizard } from './viewModel';
+import { FormReviewOrder, FormWizard, ProcessStep } from './viewModel';
 
 export default Vue.extend({
   name: 'FormReviewOrder',
@@ -116,12 +116,16 @@ export default Vue.extend({
       return total;
     },
   },
+  validations: {}, // this.$v.$invalid always be false
   methods: {
     submit(): void {
       this.$emit('update', {
-        chocolate: this.form.chocolate,
-        otherTreat: this.form.otherTreat,
-      } as FormReviewOrder);
+        data: {
+          chocolate: this.form.chocolate,
+          otherTreat: this.form.otherTreat,
+        },
+        valid: true,
+      } as ProcessStep);
     },
   },
 });

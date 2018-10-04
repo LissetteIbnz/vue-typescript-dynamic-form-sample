@@ -1,10 +1,14 @@
 <template>
   <div>
-    <FormPlanPicker v-if="currentStepNumber === 1" @update="processStep"/>
-    <FormUserDetails v-if="currentStepNumber === 2" @update="processStep"/>
-    <FormAddress v-if="currentStepNumber === 3" @update="processStep" :wizard-data="form" />
-    <FormReviewOrder v-if="currentStepNumber === 4" @update="processStep" :wizard-data="form" />
-
+    <keep-alive>
+      <component
+        ref="currentStep"
+        :is="currentStep"
+        @update="processStep"
+        :wizard-data="form"     
+      />
+    </keep-alive>
+    
     <div class="progress-bar">
       <div :style="`width: ${progress}%;`"/>
     </div>
@@ -29,9 +33,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { FormUserDetails, FormReviewOrder, FormPlanPicker, FormAddress } from '@/components';
-import { FormWizard } from './viewModel';
+import Vue, { VueConstructor } from 'vue';
+import {
+  FormUserDetails,
+  FormReviewOrder,
+  FormPlanPicker,
+  FormAddress,
+} from '@/components';
+import { FormWizard, ProcessStep, } from './viewModel';
 
 export default Vue.extend({
   name: 'FormWizard',
@@ -43,8 +52,13 @@ export default Vue.extend({
   },
   data() {
     return {
+      steps: [
+        'FormPlanPicker',
+        'FormUserDetails',
+        'FormAddress',
+        'FormReviewOrder',
+      ],
       currentStepNumber: 1 as number,
-      length: 4 as number,
       canGoNext: false as boolean,
       form: {
         plan: null,
@@ -59,21 +73,31 @@ export default Vue.extend({
     };
   },
   computed: {
+    length(): number {
+      return this.steps.length;
+    },
+    currentStep(): string {
+      return this.steps[this.currentStepNumber - 1];
+    },
     progress(): number {
-      return this.currentStepNumber / this.length * 100;
+      return (this.currentStepNumber / this.length) * 100;
     },
   },
   methods: {
-    processStep(stepData: FormWizard): void {
-      Object.assign(this.form, stepData);
-      this.canGoNext = true;
+    processStep(step: ProcessStep): void {
+      Object.assign(this.form, step.data);
+      this.canGoNext = step.valid;
     },
     goBack(): void {
       this.currentStepNumber -= 1;
+      this.canGoNext = true;
     },
     goNext(): void {
       this.currentStepNumber += 1;
-      this.canGoNext = false;
+
+      this.$nextTick(() => {
+        this.canGoNext = !(this.$refs.currentStep as Vue).$v.$invalid;
+      });
     },
   },
 });

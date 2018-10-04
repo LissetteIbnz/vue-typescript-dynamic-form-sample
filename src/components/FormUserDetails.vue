@@ -66,7 +66,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { required, email } from 'vuelidate/lib/validators';
-import { FormUserDetails } from './viewModel';
+import { FormUserDetails, ProcessStep } from './viewModel';
 
 export default Vue.extend({
   name: 'FormUserDetails',
@@ -95,13 +95,14 @@ export default Vue.extend({
   },
   methods: {
     submit(): void {
-      if (!this.$v.$invalid) {
-        this.$emit('update', {
+      this.$emit('update', {
+        data: {
           email: this.form.email,
           password: this.form.password,
           name: this.form.name,
-        } as FormUserDetails);
-      }
+        },
+        valid: !this.$v.$invalid,
+      } as ProcessStep);
     },
   },
 });

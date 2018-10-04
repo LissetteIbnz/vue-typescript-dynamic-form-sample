@@ -1,4 +1,11 @@
 import { PlanEntity } from '@/models';
+import Vue from 'vue';
+import { } from 'vuelidate';
+
+export interface ProcessStep {
+  data: FormAddress | FormUserDetails | FormReviewOrder | FormPlanPicker;
+  valid: boolean;
+}
 
 export interface FormWizard {
   plan: PlanEntity | null;
@@ -25,4 +32,8 @@ export interface FormUserDetails {
 export interface FormReviewOrder {
   chocolate: boolean;
   otherTreat: boolean;
+}
+
+export interface FormPlanPicker {
+  plan: PlanEntity| null;
 }
